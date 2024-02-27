@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Welcome back! {% endblock %}
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'css/auth_styles.css' %}">
+{% endblock %}
+
+{% block content %}
+{% if not auth %}
+<div class="alert alert-info" role="alert">
+  Not logged in! Please log in.
+</div>
+{% endif %}
+<!-- 
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+    {% if message.tags == 'error' %}
+      <li class="error-message">{{ message }}</li>
+    {% endif %}
+  {% endfor %}
+</ul>
+{% endif %} -->
+
+
+
+<div class="signup-container">
+  <div class="signup-image">
+    <img src="{% static 'img/logo-color.png' %}" alt="Image">
+  </div>
+  <div class="signup-form">
+    <h2>Log In</h2>
+    <form autocomplete="off" method="post" action="/userauth/login">
+      {% csrf_token %}
+      
+      <div class="form-group">
+        <label for="name">Username</label>
+        <input type="text" id="name" name="username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+        <a href="/userauth/forgot-password" class="forgot-password-link">Forgot Password?</a>
+        <!-- {% if messages %}
+          {% for message in messages %}
+            {% if message.tags == 'error' %}
+              <p class="error-message">{{ message }}</p>
+            {% endif %}
+          {% endfor %}
+        {% endif %} -->
+      </div>
+      <button type="submit">Sign In</button>
+    </form>
+    <div class="existing-user">
+      Doesn't have an account? <a href="/userauth/signup">Sign Up</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

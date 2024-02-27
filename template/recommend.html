@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Recommend recipes{% endblock %}
+{% block styles%}
+<link rel="stylesheet" href="{% static 'css/recommendstyles.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="recipe-container">
+  <form method="post" action="/recommend" autocomplete="off">
+    <input type="text" id="recipeNameInput" class="recipe-input" name="recipeName" placeholder="Enter recipe name">
+    <p id="recipeNameOutput" class="recipe-output"></p>
+    <div class="select-container">
+      <label for="numRecipesSelect">Number of Recipes:</label>
+      <select id="numRecipesSelect" name="numRecipes" class="custom-select" required>
+        <option value="" disabled selected>Please Select</option>
+        <option value="3">3</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+      </select>
+    </div>
+    <button class="submit-button btn btn-primary mt-2" type="submit">Submit</button>
+  </form>
+</div>
+
+
+<div id="accordion" class="mt-4">
+{% for title, minutes, steps, ingredients in prediction %}
+  <div class="card mb-3">
+    <div class="card-header" id="heading{{ forloop.counter }}">
+      <h5 class="mb-0">
+        <button class="btn btn-custom" data-bs-toggle="collapse" data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="true" aria-controls="collapse{{ forloop.counter }}">
+          {{ title }}
+        </button>
+      </h5>
+    </div>
+    
+    <div id="collapse{{ forloop.counter }}" class="collapse {% if forloop.first %}show{% endif %}" aria-labelledby="heading{{ forloop.counter }}" data-bs-parent="#accordion">
+      <div class="card-body">
+        <p>Minutes: {{ minutes }} mins</p>
+        <div class="steps-container">
+          <ol>
+            {% for step in steps %}
+              <li>{{ step }}</li>
+            {% endfor %}
+          </ol>
+        </div>
+        <p>Ingredients:</p>
+        <ul>
+          {% for ingredient in ingredients %}
+            <li>{{ ingredient }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div> 
+
+
+{% endblock %}
+
+{% block js%}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{%endblock%}

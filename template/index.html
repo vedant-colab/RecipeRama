@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Home {% endblock %}
+{% block styles %}
+
+<style>
+ .logo {
+    width: 100%; /* Make the logo responsive within its container */
+    max-width: 150px; /* Set a maximum width */
+    height: auto;
+    position: absolute;
+    top: 40%;
+    right: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  .jumbotron {
+    padding: 80px 0; /* Increase padding for better spacing on small screens */
+  }
+
+  #additional-content .recipe-list .recipe {
+    width: 100%; /* Make each recipe take the full width on small screens */
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Your Culinary Adventure Begins!</h1>
+    <p class="lead">Explore a world of delectable recipes and unleash your inner chef.</p>
+    <a href="/recommend" class="btn btn-primary btn-lg mt-2">Get Started</a>
+  </div>
+  <img src="/static/img/logo.png" alt="Logo" class="logo">
+</section>
+<div class="container">
+  <h2>Discover the Joy of Cooking</h2>
+  <p>RecipeRama is your ultimate destination for finding and creating amazing recipes. Whether you're a novice cook or a seasoned pro, we have something for everyone.</p>
+  
+  <div class="row">
+    <div class="col-md-6">
+      <img src="/static/img/jimmy%20dean.jpg" alt="Image 1" class="img-fluid">
+      <h3>Explore a World of Flavors</h3>
+      <p>Browse through our extensive collection of recipes from around the globe. From classic dishes to innovative creations, there's something to suit every palate.</p>
+    </div>
+    <div class="col-md-6">
+      <img src="/static/img/cook.jpg" alt="Image 2" class="img-fluid">
+      <h3>Cook Like a Pro</h3>
+      <p>Follow our step-by-step instructions and unleash your culinary skills. Learn new techniques, discover kitchen hacks, and create restaurant-quality meals in your own home.</p>
+    </div>
+  </div>
+</div>
+
+<hr>
+<section id="additional-content">
+  <div class="container">
+    <h2>Discover New Recipes</h2>
+    <p>Expand your culinary horizons with our vast collection of delicious recipes. From mouth-watering appetizers to delectable main courses and indulgent desserts, we have something for everyone.</p>
+    <div class="row recipe-list">
+      <div class="col-md-4">
+        <div class="recipe">
+          <img src="/static/img/chicken_tacos.jpg" alt="Recipe 1" class="img-fluid">
+          <h3>Spicy Chicken Tacos</h3>
+          <p>Try our flavorful and spicy chicken tacos that will tingle your taste buds. Perfect for a quick and easy weeknight dinner.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="recipe">
+          <img src="/static/img/vegetable_stir_fry.jpg" alt="Recipe 2" class="img-fluid">
+          <h3>Vegetable Stir-Fry</h3>
+          <p>Indulge in a healthy and vibrant vegetable stir-fry packed with fresh veggies and aromatic flavors. It's a great way to get your daily dose of nutrients.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="recipe">
+          <img src="/static/img/decedant%20choclate%20cake.jpg" alt="Recipe 3" class="img-fluid">
+          <h3>Decadent Chocolate Cake</h3>
+          <p>Satisfy your sweet tooth with a sinfully rich and moist chocolate cake. This indulgent dessert will leave you craving for more.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="recipe">
+          <img src="/static/img/pasta_carbonara.jpg" alt="Recipe 4" class="img-fluid">
+          <h3>Spaghetti Carbonara</h3>
+          <p>Enjoy a classic Italian pasta dish with creamy carbonara sauce, crispy bacon, and Parmesan cheese. It's comfort food at its finest.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="recipe">
+          <img src="/static/img/mediterranean%20salad.png" alt="Recipe 5" class="img-fluid">
+          <h3>Mediterranean Salad</h3>
+          <p>Refresh your taste buds with a light and refreshing Mediterranean salad packed with fresh vegetables, olives, and feta cheese.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="recipe">
+          <img src="/static/img/pulled_pork_salad.jpg" alt="Recipe 6" class="img-fluid">
+          <h3>BBQ Pulled Pork Sliders</h3>
+          <p>Indulge in tender and flavorful pulled pork sliders smothered in tangy BBQ sauce. Perfect for your next backyard gathering.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 
+
+{% endblock %}
+<!-- Additional content for the home page -->

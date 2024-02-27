@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{%load static %}
+
+{%block styles %}
+  <link rel="stylesheet" href="{%static 'css/blog_style.css' %}">
+  {% endblock %}
+
+ {% block title %} {{ blog_post.title }}{% endblock %}
+
+ {% block content %}
+ <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="blog-details">
+          <h2>{{ blog_post.title }}</h2>
+          <div class="blog-date">{{ blog_post.created_at|date:"F d, Y" }}</div>
+          <p>{{ blog_post.content|linebreaks }}</p>
+          <p>Created by: {{ blog_post.author.user.username }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a href="/blog/create_blog" class="btn btn-primary create-blog-button">Create Blog</a>
+ {% endblock %}
+
+{% block js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+{%endblock%}

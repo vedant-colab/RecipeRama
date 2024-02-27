@@ -1,0 +1,78 @@
+{%extends 'base.html'%}
+{% load static %}
+{% block title%} Create your blog! {%endblock%}
+{%block styles%}
+<style>
+    .blog-title {
+      font-size: 24px;
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    .blog-content {
+      font-size: 16px;
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+{%endblock%}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Create Blog</h1>
+    <form method="post" action="/blog/create_blog">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" name="title" class="form-control" id="title">
+      </div>
+      <div class="mb-3">
+        <label for="content" class="form-label">Content</label>
+        <textarea class="form-control" name="content" id="content" rows="6"></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Title Styling Options:</label>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="boldTitle">
+          <label class="form-check-label" for="boldTitle">Bold</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="italicTitle">
+          <label class="form-check-label" for="italicTitle">Italic</label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label" for="fontSizeTitle">Font Size:</label>
+          <select class="form-select" id="fontSizeTitle">
+            <option value="16">Default</option>
+            <option value="20">Large</option>
+            <option value="24">Extra Large</option>
+          </select>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Content Styling Options:</label>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="boldContent">
+          <label class="form-check-label" for="boldContent">Bold</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="italicContent">
+          <label class="form-check-label" for="italicContent">Italic</label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label" for="fontSizeContent">Font Size:</label>
+          <select class="form-select" id="fontSizeContent">
+            <option value="14">Small</option>
+            <option value="16">Default</option>
+            <option value="18">Large</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Post</button>
+    </form>
+  </div>
+{%endblock%}
+
+  {% block js%}
+  <script src="{% static 'blogscript.js'%}"></script>
+  {% endblock %}
